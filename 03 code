@@ -1,0 +1,18 @@
+if(Serial.avaible()){
+  chr=Serial.read();
+  Serial.println(chr)
+  if((chr-'A')>=0 && (chr-'Z')<=0)
+  index=chr-'A';
+  
+ ptr=morse[index]
+ while(*ptr!='\0'){
+  if(*ptr=='0'){
+  tone(Buzzer,440,300);
+  delay(300);
+  ptr++;
+  delay(100);
+  }
+  delay(300);
+      }
+    }
+  }

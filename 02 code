@@ -1,0 +1,61 @@
+#include <Keypad.h>
+const byte ROWS = 4;
+const byte COLS = 4;
+const int buzzer = 12;
+int duration =1000;
+#define NOTE_C5  523     // Do
+#define NOTE_D5  587     // Re
+#define NOTE_E5  659     // Me
+#define NOTE_F5  698     // Fa
+#define NOTE_G5  784    // So
+#define NOTE_A5  880    // La
+#define NOTE_B5  988    // Si
+
+byte rowPins[ROWS] = {5, 4, 3, 2};
+byte colPins[COLS] = {11,10,9,8};
+
+char keys[ROWS][COLS] = {
+{'F', 'E', 'D', 'C'}, 
+{'B', '3', '6', '9'},
+{'A', '2', '5', '8'}, 
+{'0', '1', '4', '7'}
+};
+
+Keypad keypad =Keypad( makeKeymap(keys), rowPins,colPins, ROWS, COLS );
+
+void setup()
+{
+  pinMode(buzzer,OUTPUT);
+  Serial.begin(9600);
+}
+void loop(){
+  char key = keypad.getKey();
+  if (key != NO_KEY){
+    switch (key) {
+     case '1':    
+       tone(12, NOTE_C5, duration);
+       break;
+     case '2':    
+       tone(12, NOTE_D5, duration);
+       break;
+     case '3':    
+       tone(12, NOTE_E5, duration);
+       break;
+     case '4':    
+       tone(12, NOTE_F5, duration);
+       break;
+     case '5':    
+       tone(12, NOTE_G5, duration);
+       break;
+     case '6':    
+       tone(12, NOTE_A5, duration);
+       break;
+     case '7':    
+       tone(12, NOTE_B5, duration);
+       break;       
+     default:
+       tone(12, NOTE_C5, duration);
+     }
+    Serial.println(key);
+  }
+}

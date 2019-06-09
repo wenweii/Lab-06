@@ -1,3 +1,5 @@
+//Arduino 演奏一段特定音樂
+
 const int buzzer = 12;
 const int toneTable[7][5]={
     { 66, 131, 262, 523, 1046},  // C Do
